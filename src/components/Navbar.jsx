@@ -60,6 +60,9 @@ const Navbar = () => {
               <li>
                 <NavLink to={"/profile"}>Profile</NavLink>
               </li>
+              <li>
+                <NavLink to={"/predictor"}>Predictor</NavLink>
+              </li>
             </>
           )}
           {!token ? (
