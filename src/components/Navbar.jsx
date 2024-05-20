@@ -61,7 +61,8 @@ const Navbar = () => {
                 <NavLink to={"/profile"}>Profile</NavLink>
               </li>
               <li>
-                <NavLink to={"/predictor"}>Predictor</NavLink>
+                <a href="https://miniproject08511503121.streamlit.app/">Predictor</a>
+                {/* <NavLink to={"/predictor"}>Predictor</NavLink> */}
               </li>
             </>
           )}

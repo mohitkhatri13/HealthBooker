@@ -47,7 +47,7 @@ const Predicted = () => {
           name={"Diabetes"}
           arr={[
             "Number of Pregnancies",
-            "Glucose Level",
+            "Glucose",
             "Blood Pressure Value",
             "Skin Thickness Value",
             "Insulin Level",

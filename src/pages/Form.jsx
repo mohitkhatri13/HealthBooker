@@ -4,15 +4,14 @@ import axios from 'axios';
 const Form = ({ name,arr}) => {
   
     const [formData, setFormData] = useState({
-        Numberofpregnancies: '',
-        glucoselevel: '',
-         bplevel: '',
-         skinthickness:'',
-         insulinlevel:'',
-         bmilevel:'',
-         diabetesvalue:'',
-         age:''
-
+      Pregnancies: '',
+      Glucose: '',
+      BloodPressure: '',
+      SkinThickness:'',
+      Insulin:'',
+      BMI:'',
+      DiabetesPedigreeFunction:'',
+      Age:''
     });
 
     const handleChange = (e) => {
@@ -20,9 +19,15 @@ const Form = ({ name,arr}) => {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form Data:", formData);
-        try {
-            await axios.post('http://localhost:5000/api/diabetes/formData', formData);
+        console.log("FormData:", formData);
+        
+        try {     
+          const result  =  await axios.post('http://127.0.0.1:8000/predict', formData);
+                
+                // const responseData = JSON.parse(result.config.data);
+                // console.log(responseData.glucose); // This will log '50'
+                
+
             alert('Form submitted successfully!');
         } catch (error) {
             console.error('Error submitting form:', error);
@@ -33,7 +38,7 @@ const Form = ({ name,arr}) => {
   
   return (
     <div className=" flex flex-col items-center    m-10   ">
-         <h1 className=" text-3xl font-semibold mb-20"> Enter your Details for {name} </h1>
+         <h1 className=" text-3xl font-semibold mb-15"> Enter your Details for {name} </h1>
           <form  onSubmit={handleSubmit} className=" flex flex-col items-center    m-10  ">
 
       {arr.map((item, ind) => (
@@ -42,7 +47,7 @@ const Form = ({ name,arr}) => {
             {item} 
             <input onChange={handleChange} 
             className="border border-black" 
-            type="text" 
+            type="number" 
             name={item.toLowerCase().replace(/\s/g, "")}/>
           </label>
         </div>
